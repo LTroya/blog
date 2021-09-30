@@ -4,12 +4,12 @@
 
 @media(min-width:640px){
     .container{
-        @apply px-8;
+        @apply px-6;
     }
 }
 
 @media(min-width:1024px){
     .container{    
-    @apply bg-red-500 px-5;
+        @apply px-8;
     }
 }
