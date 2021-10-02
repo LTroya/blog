@@ -1,5 +1,5 @@
 <x-app-layout>
-    welcome puto
+    
 </x-app-layout>
 
 {{-- <!DOCTYPE html>
