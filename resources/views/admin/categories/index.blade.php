@@ -8,6 +8,12 @@
 
 {{-- contenido --}}
 @section('content')
+    {{-- Alerta de realizado con exito con bootstrap --}}
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{session('info')}}</strong>
+        </div>
+    @endif
     {{-- crear una tarjeta -> ESTILOS BOOSTSTRAP --}}
     <div class="card">
         {{-- Crear boton de agregar categoria --}}
