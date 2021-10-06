@@ -3,7 +3,7 @@
     <div class="container py-8">
         <h1 class="text-4xl font-bold text-gray-600">{{$post->name}}</h1>
 
-        <div class="text-lg text-gray-500 mb-2">
+        <div class="mb-2 text-lg text-gray-500">
             {{$post->extract}}
         </div>
 
@@ -13,10 +13,10 @@
             <div class="lg:col-span-2">
 
                 <figure>
-                    <img class="w-full h-80 object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">
+                    <img class="object-cover object-center w-full h-80" src="{{Storage::url($post->image->url)}}" alt="">
                 </figure>
 
-                <div class="text-base text-gray-500 mt-4">
+                <div class="mt-4 text-base text-gray-500">
                     {{$post->body}}
                 </div>
 
@@ -24,13 +24,13 @@
 
             {{-- Contenido Relacionado --}}
             <aside class="ml-2">
-                <h1 class="text-2xl font-bold text-gray-600 mb-4">Más en {{$category[0]['name'] /* $post->category->name() */}}</h1>
+                <h1 class="mb-4 text-2xl font-bold text-gray-600">Más en {{ $post->category->name }}</h1>
 
                 <ul>
                     @foreach ($similares as $similar)
                         <li class="mb-4">
                             <a class="flex" href="{{route('posts.show', $similar)}}">
-                                <img class="w-36 h-20 object-cover object-center" src="{{Storage::url($similar->image->url)}}" alt="">
+                                <img class="object-cover object-center h-20 w-36" src="{{Storage::url($similar->image->url)}}" alt="">
                                 <span class="text-gray-600">{{$similar->name}}</span>
                             </a>
                         </li>
