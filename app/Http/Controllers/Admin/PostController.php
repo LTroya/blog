@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests\StorePostRequest;
 
@@ -46,7 +47,18 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        
         $post = Post::create($request->all());
+        /* verificar si se cargo o no una imagen
+        y en caso de cargar una moverla a la carpeta storage */
+        if($request->file('file')){
+            $url = Storage::put('public/posts', $request->file('file'));
+            $post->image()->create([
+                'url' => $url
+            ]);
+
+        }/* if imagen */
+
         /* la condicion valida si alguna etiqueta/tag fue seleccionada
         y la guarda en la tabla post-tag
         el metodo attach recibe un array
@@ -54,9 +66,10 @@ class PostController extends Controller
         al crear un post */
         if($request->tags){
             $post->tags()->attach($request->tags);
-        }
+        }/* if tags */
+
         return redirect()->route('admin.posts.edit', $post);
-    }
+    }/* store */
 
     /**
      * Display the specified resource.
