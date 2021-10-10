@@ -61,9 +61,9 @@ class PostController extends Controller
 
         /* la condicion valida si alguna etiqueta/tag fue seleccionada
         y la guarda en la tabla post-tag
-        el metodo attach recibe un array
+        el metodo sync recibe un array
         el array es la seleccion de los tags asignados 
-        al crear un post */
+        al crear un post y los sincroniza en la tabla*/
         if($request->tags){
             $post->tags()->attach($request->tags);
         }/* if tags */
@@ -126,7 +126,7 @@ class PostController extends Controller
             }//if eliminar imagen anterior 
 
             if($request->tags){
-                $post->tags()->attach($request->tags);
+                $post->tags()->sync($request->tags);
             }/* if tags */
        
         }//if verificar si hay imagen cargada
@@ -141,6 +141,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('info', 'El post se elimino con exito!');
     }
 }

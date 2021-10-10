@@ -1,0 +1,18 @@
+[33m1d19dc4[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m habilitando modulo actualizar post con validaciones sus pertinentes
+[33m60e72c9[m Agregando insertar imagen al modulo crear post con las validaciones pertinentes y logrando subirlas al servidor/bbdd
+[33m464b7b6[m habilitando el modulo para crear nuevos post con validaciones formRequest
+[33m8ab61c9[m Creando formulario para crear nuevo post, utilizando ckedit5 para agregar texto enriquecido en los apartados de cuerpo y extracto del post. Ademas corrigiendo error LINEA 27 de la vista -show- de post-principal(no la vista admin)
+[33m450d30e[m habilitando el modulo post, creando un datatable con livewire para mostrar la lista de post creados filtrados por usuario
+[33m11e1a53[m creando CRUD para las etiquetas/tags. creado de la misma manera que con las categorias
+[33mdfc0598[m PARTE 2 completado -> terminando el CRUD para las categorias. Insertando el plugin de jQuery <stringToSlug> para generar automaticamente el slug al ingresar/modificar la categoria. Agregando tambien una alerta al momento de ejecutar alguna accion para confirmar la accion realizada.
+[33m8b6b64f[m PARTE 1 -> modificando el panel AdminLTE y creando el CRUD para las categorias, utilizando Bootstrap para los estilos ya que AdminLTE lo trae por defecto. Insertando el plugin de LaravelCollective para los formularios
+[33m693bb9e[m integrando AdminLTE al proyecto blog, coders free. sin personalizar
+[33m2127ffd[m filtrando los posts por tags/etiquetas y habilitando los enlaces para acceder a ellos
+[33m716c939[m filtrando los posts por categoria y habilitando los enlaces de categoria en el navbar
+[33m38312f8[m habilitar el mostrar detalle de cada post con enlaces a post de la misma categoria, volviendo responsiva la vista del detalle del post. -> linea 27 en comentario manera correcta de mostrar categoria -- metodo utilizado array por errores al momento de ejecutar relacion--
+[33m9c987b3[m mostrando imagenes del post con grid y flex, haciendo el post responsive
+[33m6b60364[m actualizando tailwind y nodejs a ultima version, clases no reconocidas al usar clases de tailwind, version de nodejs +16
+[33maeff59c[m agregando funcionalidad al navbar
+[33m1fb531d[m Insertando navbar, agregando usabilidad JS con alpine al menu
+[33m3273983[m creando migraciones y seeders para llenar con registros falsos
+[33m9da7cd7[m creando modelos, migraciones y relaciones entre modelos

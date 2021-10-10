@@ -7,11 +7,18 @@
 @stop
 
 @section('content')
+
     <div class="card">
         <div class="card-body">
             {!! Form::open(['route' => 'admin.posts.store', 'autocomplete' => 'off', 'files' => true]) !!}
 
+            {{--
+                Agregar id de usuario autenticado
+                de manera oculata.
+                se elimina esta linea y se envia
+                a traves de un observer -creating
             {!! Form::hidden('user_id', auth()->user()->id) !!}
+            --}}
             
                 @include('admin.posts.partials.form')
 
