@@ -7,9 +7,30 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
+/* trabajar con cache */
+use Illuminate\Support\Facades\Cache;
+
 class PostController extends Controller
 {
     public function index(){
+
+        if(request()->page){
+            $key = 'posts' . request()->page;
+        }else{
+            $key = 'posts';
+        }
+
+        //consulta con cache
+        if(Cache::has($key)){
+            $posts = Cache::get($key);
+        }else{
+            $posts = Post::where('status', 2)->latest('id')->paginate(8);
+            //cache primer parametro donde se va a guardar
+            //segundo parametro que se va a guardar
+            //tercer parametro cuanto tiempo se va a guardar
+            Cache::put($key, $posts);
+        }//fin if cache
+
         $posts = Post::where('status', 2)->latest('id')->paginate(8);
 
         return view('posts.index', compact('posts'));

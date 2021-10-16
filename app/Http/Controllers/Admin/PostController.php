@@ -10,6 +10,7 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -51,6 +52,8 @@ class PostController extends Controller
             ]);
 
         }/* if imagen */
+
+        Cache::flush();
 
         /* la condicion valida si alguna etiqueta/tag fue seleccionada
         y la guarda en la tabla post-tag
@@ -109,6 +112,9 @@ class PostController extends Controller
             }/* if tags */
        
         }//if verificar si hay imagen cargada
+
+        Cache::flush();
+
         return redirect()->route('admin.posts.edit', $post)->with('info', 'El post se actualizo con exito!');
     }
 
@@ -117,6 +123,9 @@ class PostController extends Controller
         $this->authorize('author', $post);
         
         $post->delete();
+
+        Cache::flush();
+        
         return redirect()->route('admin.posts.index')->with('info', 'El post se elimino con exito!');
     }
 }
