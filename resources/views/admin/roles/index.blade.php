@@ -33,7 +33,7 @@
                             <a href="{{route('admin.roles.edit', $role)}}" class="btn btn-sm btn-primary">Editar</a>
                         </td>
                         <td width="10px">
-                            <form action="{{route('admin.roles.destroy', $role)}}" method="post">
+                            <form class="form-delete" action="{{route('admin.roles.destroy', $role)}}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
@@ -45,10 +45,28 @@
     </div>
 @stop
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
 @section('js')
-    <script>console.log('Hi!');</script>
-@stop
+    <script src="{{asset('js/app.js')}}"></script>
+    
+    <script>
+        $('.form-delete').submit(function(e){
+            e.preventDefault();
+
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡La etiqueta se eliminara definitivamente!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'cancelar'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+            })//swal
+        });
+
+    </script>
+@endsection

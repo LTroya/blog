@@ -49,6 +49,7 @@
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
     
+    
     <script>
     $(document).ready( function() {
         $("#name").stringToSlug({

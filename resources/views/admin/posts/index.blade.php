@@ -18,3 +18,29 @@
     @endif
     @livewire('admin.posts-index')
 @stop
+
+@section('js')
+    <script src="{{asset('js/app.js')}}"></script>
+    
+    <script>
+        $('.form-delete').submit(function(e){
+            e.preventDefault();
+
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡La etiqueta se eliminara definitivamente!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'cancelar'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+            })//swal
+        });
+
+    </script>
+@endsection

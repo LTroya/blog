@@ -48,7 +48,7 @@
                             {{-- boton eliminar --}}
                             <td width='10px'>
                                 @can('admin.categories.destroy')
-                                    <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
+                                    <form class="form-delete" action="{{route('admin.categories.destroy', $category)}}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger btn-sm" >Eliminar</button>
@@ -62,3 +62,29 @@
         </div>
     </div>
 @stop
+
+@section('js')
+    <script src="{{asset('js/app.js')}}"></script>
+    
+    <script>
+        $('.form-delete').submit(function(e){
+            e.preventDefault();
+
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡La etiqueta se eliminara definitivamente!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'cancelar'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+            })//swal
+        });
+
+    </script>
+@endsection
